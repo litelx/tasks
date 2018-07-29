@@ -15,23 +15,6 @@ export default Route.extend({
         })
     },
     actions: {
-        createTask(title) {
-            
-            let task = this.store.createRecord('task', {
-                title: title,
-                done: false
-            });
-    
-            function transitionToTask(task) {
-                // console.log('transitionTotask = ', task);
-            }
-                
-            function failure(reason) {
-                console.log('failure = ', reason);
-            }
-    
-            task.save().then(transitionToTask).catch(failure);
-        },
         deleteTask(id) {
             this.get('store').findRecord('task', id, { backgroundReload: false }).then(function (task) {
                 task.destroyRecord();

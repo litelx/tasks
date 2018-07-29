@@ -18,10 +18,11 @@
 <div class="li">{{ task-component id=task.id title=task.title done=task.done deleteTask="deleteTask" updateTask="updateTask"}}</div>
     
 {{/each}}
-<div class="footer">
-    <span>לסיום: {{ sub model.all.length model.done.length}}</span>
-    <span>הושלמו: {{model.done.length}}</span>
-    <span>סה"כ: {{ model.all.length }}</span>
-</div>
-<footer></footer>
+<footer>
+    <div class="footer">
+        <span>לסיום: {{ sub model.all.length model.done.length}}</span>
+        <span>הושלמו: {{model.done.length}}</span>
+        <span>סה"כ: {{ model.all.length }}</span>
+    </div>
+</footer>
 {{outlet}}
