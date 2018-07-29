@@ -1,0 +1,26 @@
+<div class="header">
+    <h1>משימות</h1>
+    
+    <button class="add-btn" onclick={{ action "addNewTaskComponent" }}><img src="/assets/plus-circle.svg" alt=""></button>
+</div>
+{{#if showAddNewTask}}
+    <div class="list-item">
+        <div class="task-details">
+            {{input type="text" value=title}}
+        </div>
+        <div class="task-controllers">
+            <div onclick={{action "addNewTask"}}>{{fa-icon "plus" size="2x"}}</div>
+            <div onclick={{action "cancelAddTask"}}>{{fa-icon "ban" size="2x"}}</div>
+        </div>
+    </div>
+{{/if}}
+{{#each model.all as |task|}}
+<div class="li">{{ task-component id=task.id title=task.title done=task.done deleteTask="deleteTask" updateTask="updateTask"}}</div>
+    
+{{/each}}
+<div class="footer">
+    <span>לסיום: {{ sub model.all.length model.done.length}}</span>
+    <span>הושלמו: {{model.done.length}}</span>
+    <span>סה"כ: {{ model.all.length }}</span>
+</div>
+{{outlet}}
