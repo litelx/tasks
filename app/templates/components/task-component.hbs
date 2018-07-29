@@ -2,12 +2,13 @@
 {{#if notEditing}}
     <div class="list-item">
         <div class="task-details">
-            <label class="container">
-                <input class="checkbox" type="checkbox" name="done" checked={{done}} onclick={{action "isTaskDone" id done}}>
-                <span class="checkmark"></span>
-                <span class="{{className}} task-title" onclick={{action "updateTaskTitle" }}>{{ id }}. {{ title }}</span>
-            </label>
-            {{!-- <label></label> --}}
+            <div class="container">
+                <label>
+                    <input class="checkbox" type="checkbox" name="done" checked={{done}} onclick={{action "isTaskDone" id done}}>
+                    <span class="checkmark"></span>
+                </label>
+            <span class="{{className}} task-title" onclick={{action "updateTaskTitle" }}>{{ id }}. {{ title }}</span>
+            </div>
         </div>
         <div class="task-controllers">
             <div onclick={{action "deleteTask" id}}>{{fa-icon "times" size="3x"}}</div>
@@ -16,10 +17,10 @@
 {{else}}
     <div class="list-item">
         <div class="task-details">
-            {{input type="text" value=title}}
+            {{input type="text" value=originTitle}}
         </div>
         <div class="task-controllers">
-            <img onclick={{action "sendUpdate" id title done}} src="assets/upload.svg" alt="upload">
+            <img onclick={{action "sendUpdate" id originTitle done}} src="assets/upload.svg" alt="upload">
             <div onclick={{action "cancelAddTask"}}>{{fa-icon "ban" size="2x"}}</div>
         </div>
     </div>

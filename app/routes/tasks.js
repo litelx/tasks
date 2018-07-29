@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp'
 
 export default Route.extend({
     
@@ -7,9 +8,9 @@ export default Route.extend({
 
         const doneTasksList = this.store.findAll('task')
             .then(results => results.filter( (task) => {
-                return task.get('done') === true; 
+                return task.get('done') === true 
             }))
-        return Ember.RSVP.hash({ 
+        return hash({ 
             all: taskList,
             done: doneTasksList 
         })
@@ -17,17 +18,15 @@ export default Route.extend({
     actions: {
         deleteTask(id) {
             this.get('store').findRecord('task', id, { backgroundReload: false }).then(function (task) {
-                task.destroyRecord();
-            });
+                task.destroyRecord()
+            })
         },
         updateTask(id, title, done) {
-            this.get('store').findRecord('task', id).then(function(responseRecord) {
-                responseRecord.get('title');
-                responseRecord.set('title', title);
-                responseRecord.get('done');
-                responseRecord.set('done', !done);
-                responseRecord.save();
-            });
+            this.get('store').findRecord('task', id, { backgroundReload: false }).then(function(responseRecord) {
+                responseRecord.set('title', title)
+                responseRecord.set('done', done)
+                responseRecord.save()
+            })
         }
     }
 

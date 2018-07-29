@@ -2,9 +2,6 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
     showAddNewTask: false,
-    didRender() {
-      
-    },
 
     actions: {
         addNewTaskComponent() {
@@ -18,17 +15,17 @@ export default Controller.extend({
             let task = this.store.createRecord('task', {
                 title: title,
                 done: false
-            });
+            })
     
             function transitionToTask(task) {
-                // console.log('transitionTotask = ', task);
+                // console.log('transitionTotask = ', task)
             }
                 
             function failure(reason) {
-                console.log('failure = ', reason);
+                console.log('failure = ', reason)
             }
     
-            task.save().then(transitionToTask).catch(failure);
+            task.save().then(transitionToTask).catch(failure)
             this.set('showAddNewTask', false)
 
         },

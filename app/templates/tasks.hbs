@@ -14,10 +14,11 @@
         </div>
     </div>
 {{/if}}
+
 {{#each model.all as |task|}}
-<div class="li">{{ task-component id=task.id title=task.title done=task.done deleteTask="deleteTask" updateTask="updateTask"}}</div>
-    
+    <div class="li">{{ task-component id=task.id title=task.title done=task.done deleteTask="deleteTask" updateTask="updateTask"}}</div>
 {{/each}}
+
 <footer>
     <div class="footer">
         <span>לסיום: {{ sub model.all.length model.done.length}}</span>
